@@ -1,0 +1,43 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>donation</title>#}
+{#</head>#}
+{#<body>#}
+{% extends 'Admin/admin index.html' %}
+{% block body %}
+<form action="/myapp/Search_donation_amount/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+     <table class="table table-bordered">
+        <tr>
+        <th>From Date</th>
+        <td><input type="date" name="fdate" required></td>
+
+        <th>To Date</th>
+        <td><input type="date" name="tdate" required></td>
+        <td><input type="submit" value="SEARCH"></td>
+    </tr>
+        <tr>
+            <th>SlNo</th>
+            <th>USER</th>
+            <th>DATE</th>
+            <th>AMOUNT</th>
+            <th>CATEGORY</th>
+            <th>STATUS</th>
+        </tr>
+        {% for i in da %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.USER.Name }}</td>
+            <td>{{ i.Date }}</td>
+            <td>{{ i.Amount }}</td>
+            <td>{{ i.CATEGORY.Name }}</td>
+            <td>{{ i.Status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+{% endblock %}
+</body>
+</html>

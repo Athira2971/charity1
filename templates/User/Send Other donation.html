@@ -1,0 +1,32 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>send other</title>#}
+{#</head>#}
+{#<body>#}
+{% extends 'User/user index.html' %}
+{% block body %}
+<form action="/myapp/Send_other_post/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="table table-bordered">
+        <tr>
+            <th>CATEGORY</th>
+               <td> <select name="category" required >
+                  {% for i in so %}
+                   <option value="{{ i.id}}">{{ i.Name }}</option>
+                  {% endfor %}
+               </select>
+            </td>
+        </tr>
+        <tr>
+            <th>OTHER</th>
+            <td><input type="text" name="other" min="100" max="100000"></td>
+        </tr>
+        <td></td>
+        <td><input type="submit" name="button" id="button" value="SEND" class="btn btn-info"></td>
+    </table>
+</form>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,59 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>user Rgistration</title>#}
+{#</head>#}
+{#<body>#}
+{% extends 'User/user index.html' %}
+{% block body %}
+<form action="/myapp/User_registration_post/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="table table-bordered">
+        <tr>
+            <th>IMAGE</th>
+            <td><input type="file" name="image" required></td>
+        </tr>
+        <tr>
+            <th>NAME</th>
+            <td><input type="text" name="name" required pattern="[a-zA-Z\s]+"></td>
+        </tr>
+        <tr>
+            <th>DOB</th>
+            <td><input type="date" name="dob" required></td>
+        </tr>
+        <tr>
+            <th>PLACE</th>
+            <td><input type="text" name="place" required pattern="[a-zA-Z\s]+"></td>
+        </tr>
+        <tr>
+            <th>DISTRICT</th>
+            <td><input type="text" name="district" required pattern="[a-zA-Z\s]+"></td>
+        </tr>
+        <tr>
+            <th>POST</th>
+            <td><input type="text" name="post" required pattern="[a-zA-Z\s]+"></td>
+        </tr>
+        <tr>
+            <th>PIN</th>
+            <td><input type="number" name="pin" required pattern="[0-9]{6}"></td>
+        </tr>
+        <tr>
+            <th>PHONE NUMBER</th>
+            <td><input type="number" name="phnno" required pattern="[0-9][6789][10]"></td>
+        </tr>
+        <tr>
+            <th>PASSWORD</th>
+            <td><input type="password" name="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"></td>
+        </tr>
+        <tr>
+            <th>CONFIRM PASSWORD</th>
+            <td><input type="password" name="cpassword" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"></td>
+        </tr>
+        <td></td>
+        <td><input type="submit" name="button" id="button" value="SUBMIT" class="btn btn-info"></td>
+    </table>
+</form>
+{% endblock %}
+</body>
+</html>

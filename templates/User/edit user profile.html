@@ -1,0 +1,55 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>edit profile</title>#}
+{#</head>#}
+{#<body>#}
+{% extends 'User/user index.html' %}
+{% block body %}
+
+    <form action="/myapp/Edit_user_profile_post/" method="post" enctype="multipart/form-data" >
+        {% csrf_token %}
+        <table class="table table-bordered">
+
+            <input type="hidden" name="id" value="{{ eup.id }}">
+
+            <tr>
+                <th>IMAGE</th>
+                <td><input type="file" name="image" value="{{ eup.Image }}" required></td>
+            </tr>
+            <tr>
+                <th>NAME</th>
+                <td><input type="text" name="name" value="{{ eup.Name }}" required pattern="[a-zA-Z\s]+"></td>
+            </tr>
+            <tr>
+                <th>DOB</th>
+                <td><input type="date" name="dob" value="{{ eup.Dob|date:'Y-m-d' }}" required></td>
+            </tr>
+            <tr>
+                <th>PLACE</th>
+                <td><input type="text" name="place" value="{{ eup.Place }}" required pattern="[a-zA-Z\s]+"></td>
+            </tr>
+            <tr>
+                <th>DISTRICT</th>
+                <td><input type="text" name="district" value="{{ eup.District }}" required pattern="[a-zA-Z\s]+"></td>
+            </tr>
+            <tr>
+                <th>POST</th>
+                <td><input type="text" name="post" value="{{ eup.Post }}" required pattern="[a-zA-Z\s]+"></td>
+            </tr>
+            <tr>
+                <th>PIN</th>
+                <td><input type="text" name="pin" value="{{ eup.Pin }}" required pattern="[0-9]{6}"></td>
+            </tr>
+            <tr>
+                <th>PHONE NUMBER</th>
+                <td><input type="number" name="phnno" value="{{ eup.PhoneNumber }}"required pattern="[0-9][6789][10]"></td>
+            </tr>
+                <td></td>
+                <td><input type="submit" name="button" id="button" value="EDIT" class="btn btn-info"></td>
+    </table>
+</form>
+{% endblock %}
+</body>
+</html>

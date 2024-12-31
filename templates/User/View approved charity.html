@@ -1,0 +1,42 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>View registerd charity</title>#}
+{#</head>#}
+{#<body>#}
+{% extends 'User/user index.html' %}
+{% block body %}
+<form action="/myapp/View_Approved_charity/" method="get" enctype="multipart/form-data">
+    <table class="table table-bordered">
+
+        <tr>
+            <th>SlNo</th>
+            <th>NAME</th>
+            <th>PLACE</th>
+            <th>DISTRICT</th>
+            <th>POST</th>
+            <th>PIN</th>
+            <th>PHONE NO</th>
+{#            <th></th>#}
+{#            <th></th>#}
+        </tr>
+        {% for i in vac %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.Name }}</td>
+            <td>{{ i.Place}}</td>
+            <td>{{ i.District }}</td>
+            <td>{{ i.Post }}</td>
+            <td>{{ i.Pin }}</td>
+            <td>{{ i.PhoneNumber }}</td>
+{#            <td><a href="/myapp/View_Approved_reg_charity/{{ i.LOGIN_id }}">Approve</a></td>#}
+{#            <td><a href="/myapp/Reject_Charity/{{ i.LOGIN_id }}">Reject</a></td>#}
+        </tr>
+
+{% endfor %}
+    </table>
+</form>
+{% endblock %}
+</body>
+</html>

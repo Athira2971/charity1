@@ -1,0 +1,43 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>View donation from user</title>#}
+{#</head>#}
+{#<body>#}
+{% extends 'Organizer/org index.html' %}
+{% block body %}
+<form action="/myapp/Search_don_user_other/" method="post" enctype="multipart/form-data">
+     {% csrf_token %}
+    <table class="table table-bordered">
+        <tr>
+        <th>From Date</th>
+        <td><input type="date" name="fdate"></td>
+
+        <th>To Date</th>
+        <td><input type="date" name="tdate"></td>
+        <td><input type="submit" value="SEARCH"></td>
+    </tr>
+
+        <tr>
+            <th>SLNO</th>
+            <th>DATE</th>
+            <th>USER</th>
+            <th>CATEGORY</th>
+            <th>OTHER</th>
+        </tr>
+        {% for i in dao %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.Date }}</td>
+            <td>{{ i.USER.Name }}</td>
+            <td>{{ i.CATEGORY.Name }}</td>
+
+            <td>{{ i.Other }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+{% endblock %}
+</body>
+</html>

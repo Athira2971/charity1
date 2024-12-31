@@ -1,0 +1,52 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>view profile</title>#}
+{#</head>#}
+{#<body>#}
+{% extends 'Organizer/org index.html' %}
+{% block body %}
+<form action="/myapp/view_reg_profile/" method="get" enctype="multipart/form-data">
+     {% csrf_token %}
+    <table class="table table-bordered">
+        <tr>
+{#            <th><input type="text" name="sname" id="id" placeholder="search with name"></th>#}
+{#            <th><input type="submit" name="button" id="id" value="Search"> </th>#}
+        </tr>
+        <tr>
+            <th>IMAGE</th>
+            <td><img src="{{ i.Image }}" height="100px" width="100px" alt="-"></td>
+        </tr>
+        <tr>
+            <th>NAME</th>
+            <td>{{ i.Name }}</td>
+        </tr>
+        <tr>
+            <th>PLACE</th>
+            <td>{{ i.Place }}</td>
+        </tr>
+        <tr>
+            <th>DISTRICT</th>
+            <td>{{ i.District }}</td>
+        </tr>
+        <tr>
+            <th>POST</th>
+            <td>{{ i.Post }}</td>
+        </tr>
+        <tr>
+            <th>PIN</th>
+            <td>{{ i.Pin }}</td>
+        </tr>
+        <tr>
+            <th>PHONE NUMBER</th>
+            <td>{{ i.PhoneNumber }}</td>
+        </tr>
+            <td></td>
+            <td><a href="/myapp/edit_profile/{{ i.id }}">EDIT</a> </td>
+
+    </table>
+</form>
+{% endblock %}
+</body>
+</html>

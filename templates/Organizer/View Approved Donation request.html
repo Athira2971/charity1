@@ -1,0 +1,52 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>View Approved donation request</title>#}
+{#</head>#}
+{#<body>#}
+{% extends 'Organizer/org index.html' %}
+{% block body %}
+<form action="/myapp/Search_appr_don_req/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="table table-bordered">
+    <tr>
+         <th>From Date</th>
+        <td><input type="date" name="fdate"></td>
+
+        <th>To Date</th>
+        <td><input type="date" name="tdate"></td>
+        <td><input type="submit" value="SEARCH"></td>
+    </tr>
+        <tr>
+            <th>SlNo</th>
+            <th>DATE</th>
+            <th>ORGANIZER</th>
+            <th>PURPOSE</th>
+            <th>DESCRIPTION</th>
+            <th>FILE NAME</th>
+            <th>DONATIONS</th>
+            <th>NEED DATE</th>
+        </tr>
+        {% for i in vad %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.Date }}</td>
+            <td>{{ i.ORGANIZER.Name }}</td>
+            <td>{{ i.Purpose }}</td>
+            <td>{{ i.Description }}</td>
+            <td>{{ i.FileName}}</td>
+            <td>{{ i.Donations }}</td>
+            <td>{{ i.NeedDate }}</td>
+{#            <td><a href="/myapp/Edit_donation_request/{{ i.id }}">EDIT</a></td>#}
+{#            <td><a href="/myapp/Delete_donation_request/{{ i.id }}">DELETE</a> </td>#}
+{#            <td><a href="/myapp/Approve_Donation_req/{{ i.LOGIN_id }}">Approve</a> </td>#}
+{#            <td><a href="/myapp//">Reject</a> </td>#}
+
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+{% endblock %}
+</body>
+</html>

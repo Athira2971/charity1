@@ -1,0 +1,36 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>view category</title>#}
+{#</head>#}
+{#<body>#}
+{% extends 'Organizer/org index.html' %}
+{% block body %}
+<form action="/myapp/view_cate_post/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="table table-bordered">
+        <tr>
+            <th><input type="text" name="category" id="id" placeholder="search with category"></th>
+            <th><input type="submit" name="button" id="id" value="Search"> </th>
+        </tr>
+        <tr>
+            <th>Sl No</th>
+            <th>ORGANIZER</th>
+            <th>NAME</th>
+        </tr>
+        {% for i in vc %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.ORGANIZER.Name }}</td>
+            <td>{{ i.Name }}</td>
+             <td><a href="/myapp/Edit_category/{{ i.id }}">EDIT</a> </td>
+             <td><a href="/myapp/Delete_category/{{ i.id }}">DELETE</a></td>
+        </tr>
+
+        {% endfor %}
+    </table>
+</form>
+{% endblock %}
+</body>
+</html>

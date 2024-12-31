@@ -1,0 +1,32 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>send amount</title>#}
+{#</head>#}
+{#<body>#}
+{% extends 'User/user index.html' %}
+{% block body %}
+<form action="/myapp/Send_Amount_post/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="table table-bordered">
+        <tr>
+            <th>CATEGORY</th>
+               <td> <select name="category" required>
+                  {% for i in sa %}
+                   <option value="{{ i.id}}"  >{{ i.Name }}</option>
+                  {% endfor %}
+               </select>
+            </td>
+        </tr>
+        <tr>
+            <th>AMOUNT</th>
+            <td><input type="number" min="100" max="100000" name="amount"></td>
+        </tr>
+        <td></td>
+        <td><input type="submit" name="button" id="button" value="SEND" class="btn btn-info"></td>
+    </table>
+</form>
+{% endblock %}
+</body>
+</html>

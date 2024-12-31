@@ -1,0 +1,47 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>View Registerd User</title>#}
+{#</head>#}
+{#<body>#}
+{% extends 'Admin/admin index.html' %}
+{% block body %}
+<form action="/myapp/view_reg_user_post/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+     <table class="table table-bordered">
+        <tr>
+            <th><input type="text" name="sname" id="id" placeholder="search with name"></th>
+            <th><input type="submit" name="button" id="id" value="Search"> </th>
+        </tr>
+        <tr>
+            <th>Sl No</th>
+            <th>IMAGE</th>
+            <th>NAME</th>
+            <th>DOB</th>
+            <th>DISTRICT</th>
+            <th>PLACE</th>
+            <th>POST</th>
+            <th>PIN</th>
+            <th>PHONE NO</th>
+
+        </tr>
+        {% for i in vr %}
+        <tr>
+            <td>{{ forloop.counter}}</td>
+             <td><img src="{{ i.Image }}" height="100px" width="100px" alt="-"></td>
+            <td>{{ i.Name }}</td>
+            <td>{{ i.Dob }}</td>
+            <td>{{ i.District }}</td>
+            <td>{{ i.Place }}</td>
+            <td>{{ i.Post }}</td>
+            <td>{{ i.Pin }}</td>
+            <td>{{ i.PhoneNumber }}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+{% endblock %}
+</body>
+</html>

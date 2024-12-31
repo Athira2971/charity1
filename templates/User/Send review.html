@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send Review</title>
+  <!-- Font Awesome Icon Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .fa-star {
+      font-size: 30px;
+      cursor: pointer;
+    }
+    .checked {
+      color: orange;
+    }
+  </style>
+</head>
+<body>
+  <form action="/myapp/Send_review_post/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+      <table class="table table-bordered">
+      <tr>
+        <th>REVIEW</th>
+        <td><input type="text" name="review" required pattern="[a-zA-Z\s]+"></td>
+      </tr>
+      <tr>
+
+
+          <!-- Hidden field to store the rating -->
+          <input type="hidden" id="ratingValueField" name="rating" value="0">
+
+      </tr>
+      <tr>
+        <td colspan="2">
+          <h2>Star Rating</h2>
+          <div id="stars">
+            <span class="fa fa-star" data-index="1"></span>
+            <span class="fa fa-star" data-index="2"></span>
+            <span class="fa fa-star" data-index="3"></span>
+            <span class="fa fa-star" data-index="4"></span>
+            <span class="fa fa-star" data-index="5"></span>
+          </div>
+          <p>Rating: <span id="ratingValue">0</span></p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <td><input type="submit" name="button" id="button" value="SEND" class="btn btn-info"></td>
+
+        </td>
+      </tr>
+    </table>
+  </form>
+
+  <script>
+    // Get all star elements
+    const stars = document.querySelectorAll('.fa-star');
+    let currentRating = 0;
+
+    // Function to update the star rating display
+    function updateStars(rating) {
+      stars.forEach((star, index) => {
+        if (index < rating) {
+          star.classList.add('checked');
+        } else {
+          star.classList.remove('checked');
+        }
+      });
+      currentRating = rating;
+      document.getElementById('ratingValue').textContent = currentRating;
+
+      // Update the hidden input field with the current rating value
+      document.getElementById('ratingValueField').value = currentRating;
+    }
+
+    // Attach click event listeners to each star
+    stars.forEach((star, index) => {
+      star.addEventListener('click', () => {
+        // Toggle the rating: if clicked star is already checked, set rating to previous one
+        if (currentRating === index + 1) {
+          updateStars(0);  // Reset if same star is clicked
+        } else {
+          updateStars(index + 1);  // Set new rating
+        }
+      });
+    });
+  </script>
+</body>
+</html>

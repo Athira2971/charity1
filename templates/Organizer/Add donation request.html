@@ -1,0 +1,43 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>donation request</title>#}
+{#</head>#}
+{#<body>#}
+{% extends 'Organizer/org index.html' %}
+{% block body %}
+<form action="/myapp/Add_donation_request_post/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="table table-bordered">
+        <tr>
+            <th>Date</th>
+            <td><input type="date" name="date" ></td>
+        </tr>
+        <tr>
+            <th>Purpose</th>
+            <td><input type="text" name="purpose" required pattern="[a-zA-Z\s]+"></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td><input type="text" name="description" required pattern="[a-zA-Z\s]+"></td>
+        </tr>
+        <tr>
+            <th>File Name</th>
+            <td><input type="text" name="filename" required pattern="[a-zA-Z\s]+"></td>
+        </tr>
+        <tr>
+            <th>Donations</th>
+            <td><input type="text" min="100" max="100000" name="donations"></td>
+        </tr>
+        <tr>
+            <th>NeedDate</th>
+            <td><input type="date" name="needdate" required ></td>
+        </tr>
+        <td></td>
+        <td><input type="submit" name="button" id="button" value="ADD" class="btn btn-info"</td>
+    </table>
+</form>
+{% endblock %}
+</body>
+</html>

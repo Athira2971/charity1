@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Send reply</title>
+</head>
+<body>
+<form action="/myapp/Send_Reply_post/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="table table-bordered">
+        <input type="hidden" name="id" value="{{ sr.id}}">
+        <tr>
+            <th>REPLY</th>
+            <td><input type="text" name="reply" required pattern="[a-zA-Z\s]+"></td>
+        </tr>
+            <td></td>
+            <td><input type="submit" name="button" id="button" value="SEND" class="btn btn-info"></td>
+    </table>
+</form>
+</body>
+</html>

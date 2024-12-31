@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<form action="/myapp/Login_post/" method="post"  >
+    {% csrf_token %}
+    <table border="2">
+        <h1>LOGIN</h1>
+        <tr>
+            <th>UserName</th>
+            <td><input type="text" name="uname"></td>
+        </tr>
+        <tr>
+            <th>Password</th>
+            <td><input type="password" name="password"></td>
+        </tr>
+        <td></td>
+        <td><input type="submit" value="Login"></td>
+        <tr>
+          <td><a href="/myapp/Org_Registration/">ORGANIZER REGISTRATION</a></td><br>
+          <td><a href="/myapp/User_Registration/">USER REGISTRATION</a></td>
+      </tr>
+
+    </table>
+</form>
+</body>
+</html>

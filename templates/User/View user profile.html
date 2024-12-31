@@ -1,0 +1,51 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>user profile</title>#}
+{#</head>#}
+{#<body>#}
+{% extends 'User/user index.html' %}
+{% block body %}
+<form action="/myapp/View_user_profile/" method="get" enctype="multipart/form-data" >
+    {% csrf_token %}
+    <table class="table table-bordered" >
+        <tr>
+            <th>IMAGE</th>
+            <td><img src="{{ i.Image }}" height="100px" width="100px" alt=""></td>
+        </tr>
+        <tr>
+            <th>NAME</th>
+            <td>{{ i.Name }}</td>
+        </tr>
+         <tr>
+            <th>DOB</th>
+            <td>{{ i.Dob }}</td>
+        </tr>
+         <tr>
+            <th>PLACE</th>
+            <td>{{ i.Place }}</td>
+        </tr>
+         <tr>
+            <th>DISTRICT</th>
+            <td>{{ i.District }}</td>
+        </tr>
+         <tr>
+            <th>POST</th>
+            <td>{{ i.Post }}</td>
+        </tr>
+        <tr>
+            <th>PIN</th>
+            <td>{{ i.Pin }}</td>
+        </tr>
+        <tr>
+            <th>PHONE NUMBER</th>
+            <td>{{ i.PhoneNumber }}</td>
+        </tr>
+        <td></td>
+        <td><a href="/myapp/Edit_user_profile/{{ i.id }}">EDIT</a> </td>
+    </table>
+</form>
+{% endblock %}
+</body>
+</html>

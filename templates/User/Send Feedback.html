@@ -1,0 +1,23 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>send feedback</title>#}
+{#</head>#}
+{#<body>#}
+{% extends 'User/user index.html' %}
+{% block body %}
+<form action="/myapp/Send_feedback_post/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table CLASS="table table-bordered">
+        <tr>
+            <th>FEEDBACK</th>
+            <td><input type="text" name="feedback" required pattern="[a-zA-Z\s]+"></td>
+        </tr>
+        <td></td>
+        <td><input type="submit" name="button" id="button" value="SEND" class="btn btn-info"></td>
+    </table>
+</form>
+{% endblock %}
+</body>
+</html>

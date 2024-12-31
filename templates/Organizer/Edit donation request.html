@@ -1,0 +1,45 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Edit donation request</title>#}
+{#</head>#}
+{#<body>#}
+{% extends 'Organizer/org index.html' %}
+{% block body %}
+<form action="/myapp/Edit_donation_request_post/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table CLASS="table table-bordered">
+        <input type="hidden" name="id" value="{{ ed.id }}">
+
+        <tr>
+            <th>Date</th>
+            <td><input type="date" name="date" value="{{ ed.Date|date:'Y-m-d' }}" ></td>
+        </tr>
+        <tr>
+            <th>Purpose</th>
+            <td><input type="text" name="purpose" value="{{ ed.Purpose }}" required pattern="[a-zA-Z\s]+"></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td><input type="text" name="description" value="{{ ed.Description }}" required pattern="[a-zA-Z\s]+"></td>
+        </tr>
+        <tr>
+            <th>FileName</th>
+            <td><input type="text" name="filename" value="{{ ed.FileName }}" required pattern="[a-zA-Z\s]+"></td>
+        </tr>
+        <tr>
+            <th>Donations</th>
+            <td><input type="text" name="donations" value="{{ ed.Donations}}" min="100" max="100000"></td>
+        </tr>
+        <tr>
+            <th>Need Date</th>
+            <td><input type="date" name="needdate" value="{{ ed.NeedDate|date:'Y-m-d' }}" required></td>
+        </tr>
+        <td></td>
+        <td><input type="submit" name="button" id="button" value="EDIT" class="btn btn-info"></td>
+    </table>
+</form>
+{% endblock %}
+</body>
+</html>
